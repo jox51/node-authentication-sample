@@ -1,10 +1,6 @@
 const User = require("../models/User")
 const { StatusCodes } = require("http-status-codes")
-const {
-  BadRequestError,
-  Unauthenticated,
-  UnauthenticatedError
-} = require("../errors")
+const { BadRequestError, UnauthenticatedError } = require("../errors")
 
 const register = async (req, res) => {
   const user = await User.create({ ...req.body })
@@ -24,6 +20,12 @@ const login = async (req, res) => {
   const user = await User.findOne({ email })
 
   if (!user) {
+    throw new UnauthenticatedError("Invalid credentials")
+  }
+
+  // compare password
+  const isPasswordCorrect = await user.comparePassword(password)
+  if (!isPasswordCorrect) {
     throw new UnauthenticatedError("Invalid credentials")
   }
 
