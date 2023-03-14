@@ -1,102 +1,102 @@
 openapi: 3.0.0
 info:
   title: Jobs API
-  description: ''
+  description: ""
   contact: {}
-  version: '1.0'
+  version: "1.0"
 servers:
-- url: https://node-jobs-api-7e2e.onrender.com/api/v1
-  variables: {}
+  - url: https://node-jobs-api-7e2e.onrender.com/api/v1
+    variables: {}
 paths:
   /auth/register:
     post:
       tags:
-      - Auth
+        - Auth
       summary: Register
       operationId: Register
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/RegisterRequest'
-              - example:
-                  name: Mike
-                  email: mike@yahoo.com
+                - $ref: "#/components/schemas/RegisterRequest"
+                - example:
+                    name: Mike
+                    email: mike@yahoo.com
             example:
               name: Mike
               email: mike@yahoo.com
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security: []
   /auth/login:
     post:
       tags:
-      - Auth
+        - Auth
       summary: Login
       operationId: Login
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/LoginRequest'
-              - example:
-                  email: tommy@tester.com
-                  password: secret
+                - $ref: "#/components/schemas/LoginRequest"
+                - example:
+                    email: tommy@tester.com
+                    password: secret
             example:
               email: tommy@tester.com
               password: secret
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
       security: []
   /jobs:
     post:
       tags:
-      - Jobs
+        - Jobs
       summary: Create Job
       operationId: CreateJob
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/CreateJobRequest'
-              - example:
-                  company: Miami Marlins
-                  position: frontend dev
+                - $ref: "#/components/schemas/CreateJobRequest"
+                - example:
+                    company: Miami Marlins
+                    position: frontend dev
             example:
               company: Miami Marlins
               position: frontend dev
         required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
     get:
       tags:
-      - Jobs
+        - Jobs
       summary: get Jobs
       operationId: getJobs
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
   /jobs/{id}:
@@ -109,56 +109,49 @@ paths:
         description: The jobs ID
     get:
       tags:
-      - Jobs
+        - Jobs
       summary: get Job
       operationId: getJob
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
-  /jobs/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The job ID
     patch:
       tags:
-      - Jobs
+        - Jobs
       summary: update Job
       operationId: updateJob
       parameters: []
       requestBody:
-        description: ''
+        description: ""
         content:
           application/json:
             schema:
               allOf:
-              - $ref: '#/components/schemas/updateJobRequest'
-              - example:
-                  company: target
-                  position: back end dev
+                - $ref: "#/components/schemas/updateJobRequest"
+                - example:
+                    company: target
+                    position: back end dev
             example:
               company: target
-          red: true
+              position: back end dev
+        required: true
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
     delete:
       tags:
-      - Jobs
+        - Jobs
       summary: delete Job
       operationId: deleteJob
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       deprecated: false
 components:
@@ -166,8 +159,8 @@ components:
     RegisterRequest:
       title: RegisterRequest
       required:
-      - name
-      - email
+        - name
+        - email
       type: object
       properties:
         name:
@@ -180,8 +173,8 @@ components:
     LoginRequest:
       title: LoginRequest
       required:
-      - email
-      - password
+        - email
+        - password
       type: object
       properties:
         email:
@@ -194,8 +187,8 @@ components:
     CreateJobRequest:
       title: CreateJobRequest
       required:
-      - company
-      - position
+        - company
+        - position
       type: object
       properties:
         company:
@@ -208,8 +201,8 @@ components:
     updateJobRequest:
       title: updateJobRequest
       required:
-      - company
-      - position
+        - company
+        - position
       type: object
       properties:
         company:
@@ -222,8 +215,8 @@ components:
     deleteJobRequest:
       title: deleteJobRequest
       required:
-      - company
-      - position
+        - company
+        - position
       type: object
       properties:
         company:
@@ -238,9 +231,9 @@ components:
       type: http
       scheme: bearer
 security:
-- httpBearer: []
+  - httpBearer: []
 tags:
-- name: Auth
-  description: ''
-- name: Jobs
-  description: ''
+  - name: Auth
+    description: ""
+  - name: Jobs
+    description: ""
